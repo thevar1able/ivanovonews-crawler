@@ -1,0 +1,9 @@
+lxml==4.6
+requests==2.26.0
+transformers~=4.12.3
+torch~=1.10.0
+Flask~=2.0.2
+python-telegram-bot==13.8.1
+fake-useragent==0.1.11
+schedule
+sentencepiece==0.1.96
