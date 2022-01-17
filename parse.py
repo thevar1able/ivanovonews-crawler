@@ -3,8 +3,6 @@ from lxml import etree
 from datetime import datetime
 from collections import namedtuple
 
-from fake_useragent import UserAgent
-
 NewsCard = namedtuple("NewsCard", ["id", "title", "href", "published", "preview", "views"])
 NewsDetails = namedtuple("NewsDetails", ["id", "description", "text", "images", "views"])
 
@@ -13,7 +11,6 @@ class IvanovoNews:
     BASE_URL = 'https://ivanovonews.ru/'
 
     def __init__(self):
-        self.ua = UserAgent()
         pass
 
     def load_news_page(self, page_number=1):

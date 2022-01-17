@@ -52,7 +52,6 @@ def get_unread_news():
         except:
             pass
 
-        # fuck you python
         news.reverse()
 
         for idx, n in enumerate(news):
