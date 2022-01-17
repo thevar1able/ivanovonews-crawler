@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ template "ivanovonews-crawler.fullname" . }}-data
 spec:
+  storageClassName: {{ .Values.persistence.storageClassName }}
   accessModes:
     - ReadWriteOnce
   resources:

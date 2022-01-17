@@ -5,9 +5,7 @@ metadata:
   labels:
     {{- include "ivanovonews-crawler.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include "ivanovonews-crawler.selectorLabels" . | nindent 6 }}
@@ -38,6 +36,12 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: {{ include "ivanovonews-crawler.fullname" . }}-secrets
           volumeMounts:
             - mountPath: /opt/ivanovonews-crawler/data
               name: data
